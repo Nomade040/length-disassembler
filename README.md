@@ -1,5 +1,16 @@
 # length-disassembler
-A length disassembler for x86 and x64.
+A length disassembler for x86-32 and x86-64.
+
+Example
+```C++
+#include "ldisasm.h"
+
+int main()
+{
+  char buffer[] = { 0x55, 0x8B, 0xEC, 0x53, 0x8B, 0xD9, 0x56, 0x57 };
+  size_t instructionLength = disasm(buffer);
+}
+```
 
 Unexpected results may happen if the disassembler encounters invalid instructions or VEX instructions.
 
