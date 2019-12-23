@@ -1,7 +1,9 @@
 # length-disassembler
 A length disassembler for x86-32 and x86-64.
 
-VEX instructions may not get parsed correctly.
+Possible problems
+ - Some invalid opcodes may not get parsed correctly(Untested).
+ - No support for AVX instructions is present currently.
 
 Example
 ```C++
