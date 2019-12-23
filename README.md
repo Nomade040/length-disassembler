@@ -12,7 +12,7 @@ Example
 int main()
 {
   char buffer[] = { 0x55, 0x8B, 0xEC, 0x53, 0x8B, 0xD9, 0x56, 0x57 };
-  size_t instructionLength = disasm(buffer);
+  size_t instructionLength = ldisasm(buffer);
 }
 ```
 
