@@ -20,7 +20,8 @@ size_t ldisasm(const void* const address)
 	auto parseModRM = [&]() {
 		uint8_t modrm = *++b;
 
-		if (!addressPrefix || (addressPrefix && *b >= 0x40)) {
+		if (!addressPrefix || (addressPrefix && *b >= 0x40))
+		{
 			bool hasSIB = false; //Check for SIB byte
 			if (*b < 0xC0 && (*b & 0b111) == 0b100 && !addressPrefix)
 				hasSIB = true, b++;
@@ -57,11 +58,10 @@ size_t ldisasm(const void* const address)
 		b++;
 		if (*b == 0x38 || *b == 0x3A) // 3 bytes
 		{
-			b++;
-			parseModRM();
-
-			if (*b == 0x3A)
+			if (*b++ == 0x3A)
 				offset++;
+
+			parseModRM();
 		}
 		else // 2 bytes
 		{
@@ -78,13 +78,13 @@ size_t ldisasm(const void* const address)
 	else // 1 byte
 	{
 		//Check for immediate field
-		if ((LDISM_R == 0xE && LDISM_C < 8) || (LDISM_R == 0xB && LDISM_C < 8) || LDISM_R == 7 || (LDISM_R < 4 && (LDISM_C == 4 || LDISM_C == 0xC)) || (*b == 0xF6 && !(*(b + 1) & 56)) || find(op1imm8, *b)) //imm8
+		if ((LDISM_R == 0xE && LDISM_C < 8) || (LDISM_R == 0xB && LDISM_C < 8) || LDISM_R == 7 || (LDISM_R < 4 && (LDISM_C == 4 || LDISM_C == 0xC)) || (*b == 0xF6 && !(*(b + 1) & 48)) || find(op1imm8, *b)) //imm8
 			offset++;
 		else if (*b == 0xC2 || *b == 0xCA) //imm16
 			offset += 2;
 		else if (*b == 0xC8) //imm16 + imm8
 			offset += 3;
-		else if ((LDISM_R < 4 && (LDISM_C == 5 || LDISM_C == 0xD)) || (LDISM_R == 0xB && LDISM_C >= 8) || (*b == 0xF7 && !(*(b + 1) & 56)) || find(op1imm32, *b)) //imm32,16
+		else if ((LDISM_R < 4 && (LDISM_C == 5 || LDISM_C == 0xD)) || (LDISM_R == 0xB && LDISM_C >= 8) || (*b == 0xF7 && !(*(b + 1) & 48)) || find(op1imm32, *b)) //imm32,16
 			offset += (rexW) ? 8 : (operandPrefix ? 2 : 4);
 		else if (LDISM_R == 0xA && LDISM_C < 4)
 			offset += (rexW) ? 8 : (addressPrefix ? 2 : 4);
