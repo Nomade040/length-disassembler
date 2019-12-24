@@ -1,9 +1,9 @@
 # length-disassembler
 A length disassembler for x86-32 and x86-64.
 
-Possible problems
+Known issues
  - Some invalid opcodes may not get parsed correctly.
- - No support for AVX instructions is present.
+ - There is no support for AVX and processor-specific instructions.
 
 Example
 ```C++
