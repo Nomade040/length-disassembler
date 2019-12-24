@@ -2,7 +2,7 @@
 A length disassembler for x86-32 and x86-64.
 
 Possible problems
- - Some invalid opcodes may not get parsed correctly(Untested).
+ - Some invalid opcodes may not get parsed correctly.
  - No support for AVX instructions is present.
 
 Example
