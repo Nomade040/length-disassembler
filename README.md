@@ -1,18 +1,18 @@
 # length-disassembler
 A length disassembler for x86-32 and x86-64 in C++.
 
-Known "issues"
+# Known "issues"
  - Some invalid opcodes may not get parsed correctly.
  - There is no support for AVX and processor-specific instructions.
 
-Interface
+# Interface
 ```C++
 // address: a pointer to a buffer containing instructions.
 // x86_64_mode: If true, disassembles x86-64 instructions, otherwise disasassembles x86-32 instructions.
 size_t ldisasm(const void* const address, const bool x86_64_mode = false)
 ```
 
-Example
+# Usage
 ```C++
 #include "ldisasm.h"
 
@@ -23,7 +23,7 @@ int main()
 }
 ```
 
-References:
+# References
  * Intel® 64 and IA-32 Architectures Software Developer’s Manual Volume 2 (2A, 2B, 2C & 2D): Instruction Set Reference, A-Z
    - Section 2.1
    - Section 2.2.1
