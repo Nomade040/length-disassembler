@@ -1,6 +1,6 @@
 #pragma once
 
-#ifndef OLDISASM_H
+#ifndef LDISASM_H
 #define LDISASM_H
 
 #include <stdint.h>
