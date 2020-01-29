@@ -39,7 +39,7 @@ size_t ldisasm(const void* const address, const bool x86_64_mode)
 	uint8_t* b = (uint8_t*)(address);
 
 	//Parse legacy prefixes & REX prefixes
-	for (; findByte(prefixes, sizeof(prefixes), *b) || ((x86_64_mode) ? (R == 4) : false); b++)
+	for (int i = 0; i < 14 && findByte(prefixes, sizeof(prefixes), *b) || ((x86_64_mode) ? (R == 4) : false); i++, b++)
 	{
 		if (*b == 0x66)
 			operandPrefix = true;
