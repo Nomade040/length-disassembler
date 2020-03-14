@@ -1,5 +1,5 @@
 # length-disassembler
-A length disassembler for x86-32 and x86-64 in C/C++.
+A length disassembler for x86-32 and x86-64 written in C.
 
 # Known "issues"
  - Some invalid opcodes may not get parsed correctly.
